@@ -1,0 +1,51 @@
+<% layout("layouts/boilerplate") -%>
+
+<body>
+    <div class="row">
+        <div class="col-8 offset-2 mt-3">
+    <h1>Edit List</h1>
+    <form method="post" action="/listings/<%=singleData._id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+        <div class="mb-3">       
+            <label for="title" class="form-label">title: </label>
+            <input type="text" class="form-control"  name="listing[title]" value="<%= singleData.title %>" required > 
+            <div class="valid-feedback">Looks good</div>
+        </div>
+        <div class="mb-3">       
+            <label for="description" class="form-label">description: </label>
+             <textarea class="form-control"  name="listing[description]" required><%= singleData.description %></textarea>
+             <div class="invalid-feedback">Description should be short</div>
+        </div>
+        <div class="mb-3">    
+            <h4>Original Image</h4>  
+            <img src="<%= OriginalUrl %>" alt="image">
+        </div>
+        <div class="mb-3">      
+            <label for="image" class="form-label">image: </label>
+            <input type="file" class="form-control" value="<%= singleData.image.url %>" id="image" name="listing[image]" >
+            <div class="invalid-feedback">Image should be of valid link</div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-4">    
+                <label for="price" class="form-label">price: </label>
+                <input  class="form-control" value="<%= singleData.price %>"  name="listing[price]" required > 
+                <div class="invalid-feedback">price should be valid</div>
+            </div>
+            <div class="mb-3 col-md-8">  
+                <label for="country" class="form-label">country: </label>
+                <input type="text" class="form-control" value="<%= singleData.country %>" name="listing[country]" required > 
+                <div class="invalid-feedback">country should be valid</div>
+            </div>
+        </div>
+       
+        <div class="mb-3">     
+            <label for="location" class="form-label">location: </label>
+            <input type="text" class="form-control" value="<%= singleData.location %>" id="location" name="listing[location]" required>
+            <div class="invalid-feedback">location should be valid</div> 
+        </div>
+       
+          <button class="btn btn-dark add-btn mt-3 mb-3">Edit</button>
+    </form>
+    </div>
+    </div>
+</body>
+</html>
